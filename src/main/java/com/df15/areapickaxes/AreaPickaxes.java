@@ -14,7 +14,10 @@ public class AreaPickaxes extends JavaPlugin
     {
         getServer().getPluginManager().registerEvents(new AreaPickaxeListener(), this);
 
-        getCommand("apick").setExecutor(new AreaPickaxeCommand());
+        AreaPickaxeCommand apickCommand = new AreaPickaxeCommand();
+
+        getCommand("apick").setExecutor(apickCommand);
+        getCommand("apick").setTabCompleter(apickCommand);
 
         getLogger().info("AreaPickaxes habilitado.");
     }
