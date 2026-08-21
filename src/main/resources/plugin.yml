@@ -1,0 +1,20 @@
+name: AreaPickaxes
+main: com.df15.areapickaxes.AreaPickaxes
+version: '1.0.2'
+api-version: '1.21'
+description: >
+  Plugin nuevo (sesion 2026-08-13, a peticion del usuario): permite dar
+  (via comando, solo admin) picos que minan en un area rectangular
+  (2x2, 2x3, 3x3, etc.) alrededor del bloque golpeado, en vez de un solo
+  bloque.
+author: Lorealex
+load: POSTWORLD
+commands:
+  apick:
+    description: Da un pico de mineria por area
+    usage: "/apick give <jugador> <AREAxAREA> [material]"
+    permission: areapickaxes.admin.give
+permissions:
+  areapickaxes.admin.give:
+    description: Permite usar /apick give para crear picos de area
+    default: op
