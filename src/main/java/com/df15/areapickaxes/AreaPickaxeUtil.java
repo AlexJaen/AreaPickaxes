@@ -10,13 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Sesion 2026-08-13: helpers para leer/escribir el "ancho x alto" de un
+ * Nota (2026-08-13): helpers para leer/escribir el "ancho x alto" de un
  * pico de area en su PersistentDataContainer. Dos claves separadas
  * (width/height) en vez de una sola "2x3" para no tener que parsear un
  * String cada vez que se rompe un bloque -- se lee directo como enteros.
  *
- * Sesion 2026-08-21 (a peticion del usuario, de cara a publicar el
- * plugin para que lo use gente de otros servidores): se ha quitado por
+ * Nota (2026-08-21): se ha quitado por
  * completo el sistema de "tiers" con nombres/colores/lore tematicos de
  * carcel (Pico del Tunel, Pico del Butron...) que solo tenia sentido en
  * este servidor concreto. Ahora el nombre y la descripcion son 100%
@@ -47,9 +46,9 @@ public class AreaPickaxeUtil
         meta.setDisplayName(ChatColor.WHITE + "" + ChatColor.BOLD + width + "x" + height + " " + materialName + " Pickaxe");
 
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "Mina un area de " + width + "x" + height + " bloques");
-        lore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "de una sola vez, alrededor del bloque que rompas.");
-        lore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "Por lo demas, funciona igual que un pico normal.");
+        lore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "Mines a " + width + "x" + height + " area of blocks");
+        lore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "at once, around the block you break.");
+        lore.add(ChatColor.GRAY + "" + ChatColor.ITALIC + "Otherwise it works like a normal pickaxe.");
 
         meta.setLore(lore);
 

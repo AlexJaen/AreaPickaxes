@@ -21,9 +21,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Sesion 2026-08-13 (a peticion del usuario): "mediante un comando (al
- * cual obviamente luego los usuarios no tendran permiso) podamos crear
- * picos que minen en areas de 2x2, 2x3, 3x3, etc." -- comando de solo
+ * Nota (2026-08-13): comando de administracion para crear picos que
+ * minen en areas de 2x2, 2x3, 3x3, etc. -- comando de solo
  * admin (permiso areapickaxes.admin.give, default op, ver plugin.yml),
  * NUNCA pensado para que un jugador normal lo tenga.
  *
@@ -31,7 +30,7 @@ import java.util.regex.Pattern;
  * Ejemplos:  /apick give Notch 2x2
  *            /apick give Notch 3x3 netherite_pickaxe
  *
- * Sesion 2026-08-21 (a peticion del usuario): autocompletado con tabulador
+ * Nota (2026-08-21): autocompletado con tabulador
  * para los 4 argumentos -- ver onTabComplete() mas abajo.
  */
 public class AreaPickaxeCommand implements CommandExecutor, TabCompleter
@@ -58,17 +57,17 @@ public class AreaPickaxeCommand implements CommandExecutor, TabCompleter
     {
         if(args.length < 1 || !args[0].equalsIgnoreCase("give"))
         {
-            sender.sendMessage(ChatColor.DARK_GREEN + "------ /apick give <jugador> <AREAxAREA> [material] ------");
-            sender.sendMessage("Da un pico que mina un area rectangular de bloques de una vez.");
-            sender.sendMessage(ChatColor.DARK_GREEN + "Ejemplo: " + ChatColor.WHITE + "/apick give Notch 3x3");
-            sender.sendMessage(ChatColor.GRAY + "Material por defecto: diamond_pickaxe");
+            sender.sendMessage(ChatColor.DARK_GREEN + "------ /apick give <player> <WIDTHxHEIGHT> [material] ------");
+            sender.sendMessage("Gives a pickaxe that mines a rectangular area of blocks at once.");
+            sender.sendMessage(ChatColor.DARK_GREEN + "Example: " + ChatColor.WHITE + "/apick give Notch 3x3");
+            sender.sendMessage(ChatColor.GRAY + "Default material: diamond_pickaxe");
 
             return true;
         }
 
         if(args.length < 3)
         {
-            sender.sendMessage(ChatColor.RED + "Uso: /apick give <jugador> <AREAxAREA> [material]");
+            sender.sendMessage(ChatColor.RED + "Usage: /apick give <player> <WIDTHxHEIGHT> [material]");
 
             return true;
         }
@@ -78,7 +77,7 @@ public class AreaPickaxeCommand implements CommandExecutor, TabCompleter
 
         if(target == null)
         {
-            sender.sendMessage(ChatColor.RED + "Ese jugador no esta conectado!");
+            sender.sendMessage(ChatColor.RED + "That player is not online!");
 
             return true;
         }
@@ -87,7 +86,7 @@ public class AreaPickaxeCommand implements CommandExecutor, TabCompleter
 
         if(!matcher.matches())
         {
-            sender.sendMessage(ChatColor.RED + "Formato de area invalido! Usa algo como 2x2, 2x3, 3x3...");
+            sender.sendMessage(ChatColor.RED + "Invalid area format! Use something like 2x2, 2x3, 3x3...");
 
             return true;
         }
@@ -97,7 +96,7 @@ public class AreaPickaxeCommand implements CommandExecutor, TabCompleter
 
         if(width < 1 || height < 1 || width > 9 || height > 9)
         {
-            sender.sendMessage(ChatColor.RED + "El area tiene que estar entre 1x1 y 9x9!");
+            sender.sendMessage(ChatColor.RED + "The area must be between 1x1 and 9x9!");
 
             return true;
         }
@@ -110,7 +109,7 @@ public class AreaPickaxeCommand implements CommandExecutor, TabCompleter
 
             if(parsed == null || !parsed.name().endsWith("_PICKAXE"))
             {
-                sender.sendMessage(ChatColor.RED + "Ese material no es un pico valido!");
+                sender.sendMessage(ChatColor.RED + "That material is not a valid pickaxe!");
 
                 return true;
             }
@@ -124,11 +123,11 @@ public class AreaPickaxeCommand implements CommandExecutor, TabCompleter
 
         target.getInventory().addItem(pickaxe);
 
-        target.sendMessage(ChatColor.GREEN + "Has recibido un pico de area " + width + "x" + height + "!");
+        target.sendMessage(ChatColor.GREEN + "You received an area pickaxe " + width + "x" + height + "!");
 
         if(!sender.equals(target))
         {
-            sender.sendMessage(ChatColor.GREEN + "Le has dado a " + target.getName() + " un pico de area " + width + "x" + height + "!");
+            sender.sendMessage(ChatColor.GREEN + "You gave " + target.getName() + " an area pickaxe " + width + "x" + height + "!");
         }
 
         return true;

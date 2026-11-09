@@ -3,7 +3,7 @@ package com.df15.areapickaxes;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
- * Plugin nuevo (sesion 2026-08-13), a peticion explicita del usuario --
+ * Plugin AreaPickaxes --
  * ver AreaPickaxeCommand.java y AreaPickaxeListener.java para la logica
  * real.
  */
@@ -19,6 +19,13 @@ public class AreaPickaxes extends JavaPlugin
         getCommand("apick").setExecutor(apickCommand);
         getCommand("apick").setTabCompleter(apickCommand);
 
-        getLogger().info("AreaPickaxes habilitado.");
+        // Nota (2026-09-03): evita falsos positivos del check
+        // "AirLiquidBreak" de GrimAC causados por los bloques "extra"
+        // que rompen los picos de area (ver GrimAirLiquidBreakExemption
+        // para la explicacion completa). No hace nada si GrimAC no esta
+        // instalado.
+        GrimAirLiquidBreakExemption.register(this);
+
+        getLogger().info("AreaPickaxes enabled.");
     }
 }

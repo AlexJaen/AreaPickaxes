@@ -6,12 +6,12 @@
 
     <groupId>com.df15</groupId>
     <artifactId>areapickaxes</artifactId>
-    <version>1.0.2</version>
+    <version>1.1.0</version>
     <packaging>jar</packaging>
 
     <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.source>25</maven.compiler.source>
+        <maven.compiler.target>25</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -24,13 +24,12 @@
     </repositories>
 
     <dependencies>
-        <!-- Paper API 1.21.11: misma version exacta que jail/lobby (ver
-             server/paper-1.21.11-132.jar), mismo patron que
-             RareItemHunter/ServerRules. -->
+        <!-- Paper 26.2 API (requires JDK 25). Latest published builds:
+             https://repo.papermc.io/repository/maven-public/io/papermc/paper/paper-api/ -->
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
-            <version>1.21.11-R0.1-SNAPSHOT</version>
+            <version>26.2.build.129-stable</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -49,7 +48,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.13.0</version>
                 <configuration>
-                    <release>21</release>
+                    <release>25</release>
                 </configuration>
             </plugin>
         </plugins>
